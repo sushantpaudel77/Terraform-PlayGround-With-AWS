@@ -75,14 +75,14 @@ resource "aws_s3_bucket_website_configuration" "mywebapp" {
 }
 
 resource "aws_s3_object" "index_html" {
-  bucket = aws_s3_bucket.my-webapp-bucket.bucket
+  bucket = aws_s3_bucket.my-webapp-bucket.id
   source = "./index.html"
   key    = "index.html"
   content_type = "text/html"
 }
 
 resource "aws_s3_object" "style_css" {
-  bucket = aws_s3_bucket.my-webapp-bucket.bucket
+  bucket = aws_s3_bucket.my-webapp-bucket.id
   source = "./style.css"
   key    = "style.css"
   content_type = "text/css"
