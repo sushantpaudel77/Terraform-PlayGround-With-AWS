@@ -68,7 +68,7 @@ resource "aws_route_table_association" "public-sub" {
 resource "aws_instance" "myserver" {
   ami           = "ami-043339ea831b48099"
   instance_type = "t3.nano"
-  subnet_id = aws_subnet.public-subnet.id
+  subnet_id     = aws_subnet.public-subnet.id
 
   tags = {
     Name = "SampleServer"
