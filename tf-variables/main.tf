@@ -28,6 +28,6 @@ resource "aws_instance" "my-server" {
   }
 
   tags = merge(var.additional_tags, {
-    Name = "local.name"
+    Name = local.name
   })
 }
