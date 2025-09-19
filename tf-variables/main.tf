@@ -12,6 +12,11 @@ provider "aws" {
   region = "eu-north-1"
 }
 
+locals {
+  owner = "ABC"
+  name = "MYSERVER"
+}
+
 resource "aws_instance" "my-server" {
   ami           = "ami-043339ea831b48099"
   instance_type = var.aws_instance_type
@@ -23,6 +28,6 @@ resource "aws_instance" "my-server" {
   }
 
   tags = merge(var.additional_tags, {
-    Name = "SampleServer"
+    Name = "local.name"
   })
 }
