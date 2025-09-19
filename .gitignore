@@ -8,7 +8,6 @@ crash.log
 *.backup
 *.env
 
-
 # Optional: keep lock file for reproducibility
 # Comment out if you want to ignore it
 # .terraform.lock.hcl
