@@ -7,7 +7,7 @@ crash.log
 *.tfplan
 *.backup
 *.env
-.env
+
 
 # Optional: keep lock file for reproducibility
 # Comment out if you want to ignore it
