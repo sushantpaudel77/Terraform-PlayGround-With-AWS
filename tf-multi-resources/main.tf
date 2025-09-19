@@ -33,20 +33,52 @@ resource "aws_subnet" "main" {
   }
 }
 
-# Creating 4 EC2 Instance
+# # Creating 4 EC2 Instance
+# resource "aws_instance" "main" {
+#   ami           = "ami-0a716d3f3b16d290c"
+#   instance_type = "t3.micro"
+#   count         = 4
+#   subnet_id     = element(aws_subnet.main[*].id, count.index % length(aws))
+
+#   tags = {
+#     Name = "${local.project}-instance-${count.index}"
+#   }
+# }
+
+
+# Creating 2 EC2 Instance
+# resource "aws_instance" "main" {
+#   count         = length(var.ec2_config)
+#   ami           = var.ec2_config[count.index].ami
+#   instance_type = var.ec2_config[count.index].instance_type
+
+#   subnet_id = element(aws_subnet.main[*].id, count.index % length(aws_subnet.main))
+
+#   tags = {
+#     Name = "${local.project}-instance-${count.index}"
+#   }
+# }
+
 resource "aws_instance" "main" {
-  ami           = "ami-0a716d3f3b16d290c"
-  instance_type = "t3.micro"
-  count         = 4
-  subnet_id     = element(aws_subnet.main[*].id, count.index % length(aws_subnet.main))
+
+  # We will get each.key & each.value
+  for_each = var.ec2_map
+
+  ami           = each.value.ami
+  instance_type = each.value.instance_type
+
+  subnet_id = element(aws_subnet.main[*].id, index(keys(var.ec2_map), each.key) % length(aws_subnet.main))
 
   tags = {
-    Name = "${local.project}-instance-${count.index}"
+    Name = "${local.project}-instance-${each.key}"
   }
 }
 
 output "aws_subnet_id" {
   value = aws_subnet.main[1].id
 }
+
+
+
 
 
