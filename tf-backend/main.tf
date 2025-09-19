@@ -5,11 +5,16 @@ terraform {
       version = "6.14.0"
     }
   }
+  backend "s3" {
+    bucket = "demo-bucket-a18420669a71cc4e"
+    key = "backend.tfstate"
+    region = "eu-north-1"
+  }
 }
 
 provider "aws" {
   # Configuration options
-  region = var.region
+  region = "eu-north-1"
 }
 
 resource "aws_instance" "my-server" {

@@ -1,0 +1,12 @@
+# Terraform local files
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+*.tfplan
+*.backup
+
+# Optional: keep lock file for reproducibility
+# Comment out if you want to ignore it
+# .terraform.lock.hcl
