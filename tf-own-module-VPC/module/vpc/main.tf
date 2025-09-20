@@ -23,6 +23,10 @@ locals {
     # Key = {} if public is true in subnet_config
     for key, config in var.subnet_config : key => config if config.public
   }
+
+   private_subnet = {
+    for key, config in var.subnet_config : key => config if !config.public
+  }
 }
 
 # Internet Gateway, if there is alteast one public subnet
