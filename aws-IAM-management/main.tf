@@ -81,5 +81,4 @@ resource "aws_iam_user_policy_attachment" "main" {
   user = aws_iam_user.users[each.value.username].name
   # Use AWS managed policy ARN dynamically
   policy_arn = "arn:aws:iam::aws:policy/${each.value.role}"
-  
 }
