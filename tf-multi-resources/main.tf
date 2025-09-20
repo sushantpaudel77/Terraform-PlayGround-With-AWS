@@ -33,12 +33,12 @@ resource "aws_subnet" "main" {
   }
 }
 
-# # Creating 4 EC2 Instance
+# Creating 4 EC2 Instance
 # resource "aws_instance" "main" {
 #   ami           = "ami-0a716d3f3b16d290c"
 #   instance_type = "t3.micro"
 #   count         = 4
-#   subnet_id     = element(aws_subnet.main[*].id, count.index % length(aws))
+#   subnet_id     = element(aws_subnet.main[*].id, count.index % length(aws_instance.main))
 
 #   tags = {
 #     Name = "${local.project}-instance-${count.index}"
