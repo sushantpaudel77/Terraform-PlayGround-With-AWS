@@ -42,7 +42,7 @@ resource "aws_subnet" "private_subnet" {
   cidr_block = "10.0.0.0/24"
 }
 
-resource "aws_instance" "main" {
+resource "aws_instance" "myserver" {
   ami           = "ami-043339ea831b48099"
   instance_type = "t3.micro"
   #   vpc_security_group_ids = [aws_security_group.main.id]
